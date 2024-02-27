@@ -1,0 +1,61 @@
+class RemoteControl:
+    def __init__(self):
+        self.is_on = False
+        self.volume = 10
+        self.channel = 1
+    
+    def power(self):
+        self.is_on = not self.is_on
+        print("Телевизор включен." if self.is_on else "Телевизор выключен.")
+    
+    def increase_volume(self):
+        if self.is_on:
+            self.volume += 1
+            print(f"Громкость: {self.volume}")
+        else:
+            print("Телевизор выключен.")
+    
+    def decrease_volume(self):
+        if self.is_on:
+            if self.volume > 0:
+                self.volume -= 1
+            print(f"Громкость: {self.volume}")
+        else:
+            print("Телевизор выключен.")
+    
+    def change_channel(self, channel):
+        if self.is_on:
+            self.channel = channel
+            print(f"Канал: {self.channel}")
+        else:
+            print("Телевизор выключен.")
+    
+def main():
+    remote = RemoteControl()
+
+    while True:
+        print("\n1. Включить/Выключить")
+        print("2. Увеличить громкость")
+        print("3. Уменьшить громкость")
+        print("4. Сменить канал")
+        print("5. Выход")
+
+        choice = input("Выберите действие: ")
+
+        if choice == "1":
+            remote.power()
+        elif choice == "2":
+            remote.increase_volume()
+        elif choice == "3":
+            remote.decrease_volume()
+        elif choice == "4":
+            channel = int(input("Введите номер канала: "))
+            remote.change_channel(channel)
+        elif choice == "5":
+            print("Выход из программы.")
+            break
+        else:
+            print("Неправильный ввод. Пожалуйста, попробуйте еще раз.")
+
+if __name__ == "__main__":
+    main()
